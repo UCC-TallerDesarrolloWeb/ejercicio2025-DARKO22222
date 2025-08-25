@@ -1,75 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Ejercicio Formulario</title>
     <style>
-        form {
-            display: block;
-            margin-top: 0em;
-        }
+      form {
+        display: block;
+        margin-top: 0em;
+      }
     </style>
-</head>
-<body>
-<!--Cree un Formulario con los campos que se proponen a continuacion-->
-<!--Agregue el atributo legend-->
+  </head>
+  <body>
+    <h3>
+      ¡Suscríbase a Nuestro Portal de Noticias! Crear una cuenta es rápido!
+    </h3>
+    <fieldset>
+        <legend>Persona</legend>
+    <form>
+      <p>
+        <label for="Nombre">Nombre:</label>
+        <input
+          type="text"
+          name="Nombre"
+          id="Nombre"
+          size="40"
+          maxlength="20"
+          placeholder="Ingrese su Nombre"
+        />
+      </p>
 
-<!--Si tienes dudas de como hacer un formulario, puedes consultar:
-    https://www.w3schools.com/html/tryit.asp?filename=tryhtml_elem_output-->
+      <p>
+        <label for="Apellido">Apellido:</label>
+        <input
+          type="text"
+          name="Apellido"
+          id="Apellido"
+          size="40"
+          maxlength="20"
+          placeholder="Ingrese su Apellido"
+        />
+      </p>
 
-<h3>Suscribase a Nuestro Portal de Noticias! Crear una cuenta es rápido!</h3>
-<form>
-    <p>
-Nombre: <input type="text" name="Nombre" size="40" maxlength="20" placeholder="Ingrese su Nombre">
-    </p>
-    <p>
-Apellido: <input type="text" name="Apellido" size="40"  maxlength="20" placeholder="Ingrese su Apellido">
-</p>
-<p>
-Sexo: 
-<input type="radio" name="gender" value="male" > Male
-<input type="radio" name="gender" value="female"> Female
-</p>
-<p>
-Edad: <input type="number" name="Edad" min="0" max="1000">
-</p>
-<p>
-Email: <input type="email" name="Email" size="40" placeholder="Ingrese su Email">
-</p>
-<p>
-Usuario:<input type="text" name="Usuario" size="40" placeholder="Ingrese su Usuario">
-</p>
-<p>
-Password: <input type="password" name="pass1" size="40" placeholder="Ingrese su password">
-</p>
-Confirmar Password: <input type="password" name="pass2" size="40" placeholder="Confirme su password">
-</p>
-<p>
-Tipo de servicio:
-<select name="tipo de servicio">
-    <option value="free">free</option>
-    <option value="standar">standar</option>
-    <option value="Premium">Premium</option>
- </select>
-<p>
-Tema:
-<input type="checkbox" name="ck_politica" value="politica">
-Política
-<input type="checkbox" name="ck_negocio" value="negocios">
-Negocios
-<input type="checkbox" name="ck_tecnologia" value="tecnologia">
-Tecnología
-<input type="checkbox" name="ck_salud" value="salud">
-Salud
-<p>
-Agregue un comentario:
-<textarea>Escriba un comentario</textarea>
-</p>
-<p>
-<button type="button">
-Boton de Enviar
-</button>
-</p>
-</form>
-</body>
+      <p>
+        Sexo:
+        <input type="radio" name="gender" value="male" id="Male" />
+        <label for="Male">Male</label>
+        <input type="radio" name="gender" value="female" id="Female" />
+        <label for="Female">Female</label>
+      </p>
+
+      <p>
+        <label for="Edad">Edad:</label>
+        <input type="number" name="Edad" id="Edad" min="0" max="1000" />
+      </p>
+      </fieldset>
+      <fieldset>
+        <legend>Informacion De La cuenta</legend>
+      <p>
+        <label for="Email">Email:</label>
+        <input
+          type="email"
+          name="Email"
+          id="Email"
+          size="40"
+          placeholder="Ingrese su Email"
+        />
+      </p>
+
+      <p>
+        <label for="Usuario">Usuario:</label>
+        <input
+          type="text"
+          name="Usuario"
+          id="Usuario"
+          size="40"
+          placeholder="Ingrese su Usuario"
+        />
+      </p>
+
+      <p>
+        <label for="Password">Password:</label>
+        <input
+          type="password"
+          name="pass1"
+          id="Password"
+          size="40"
+          placeholder="Ingrese su password"
+        />
+      </p>
+
+      <p>
+        <label for="ConfirmarPassword">Confirmar Password:</label>
+        <input
+          type="password"
+          name="pass2"
+          id="ConfirmarPassword"
+          size="40"
+          placeholder="Confirme su password"
+        />
+      </p>
+      </fieldset>
+      <fieldset>
+        <legend>Tipo de Servicio</legend>
+
+      <p>
+        <label for="Servicio">Tipo de servicio:</label>
+        <select name="servicio" id="Servicio">
+          <option value="free">Free</option>
+          <option value="standar">Standar</option>
+          <option value="premium">Premium</option>
+        </select>
+      </p>
+
+      <p>
+        Tema:
+        <input
+          type="checkbox"
+          name="ck_politica"
+          value="politica"
+          id="Politica"
+        />
+        <label for="Politica">Política</label>
+
+        <input
+          type="checkbox"
+          name="ck_negocio"
+          value="negocios"
+          id="Negocios"
+        />
+        <label for="Negocios">Negocios</label>
+
+        <input
+          type="checkbox"
+          name="ck_tecnologia"
+          value="tecnologia"
+          id="Tecnologia"
+        />
+        <label for="Tecnologia">Tecnología</label>
+
+        <input type="checkbox" name="ck_salud" value="salud" id="Salud" />
+        <label for="Salud">Salud</label>
+      </p>
+
+      <p>
+        <label for="Comentario">Agregue un comentario:</label>
+        <textarea
+          id="Comentario"
+          name="comentario"
+          rows="4"
+          cols="40"
+          placeholder="Escriba un comentario"
+        ></textarea>
+      </p>
+      </fieldset>
+      <p>
+        <button type="submit">Enviar</button>
+      </p>
+    </form>
+  </body>
 </html>
