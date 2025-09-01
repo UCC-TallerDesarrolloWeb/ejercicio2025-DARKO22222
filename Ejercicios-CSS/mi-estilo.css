@@ -1,0 +1,28 @@
+div {
+  border: 1px solid rgb(55, 55, 79);
+  margin: 20px;
+  padding: 10px;
+  background-color: rgba(35, 41, 61, 0.492);
+  border-radius: 15px;
+  box-shadow: 10px 12px beige;
+}
+#imagen-cv {
+  width: 20%;
+  float: left;
+  border-radius: 50%;
+}
+body {
+  text-align: center;
+  font-family: "Edu NSW ACT Cursive", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background: linear-gradient(to right, rgb(175, 175, 255));
+}
+.Titulo {
+  text-shadow: 10px 5px rgba(86, 80, 80, 0.321);
+}
+.pos-fix {
+  position: fixed;
+  gap: 0;
+}

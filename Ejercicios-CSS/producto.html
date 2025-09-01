@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Catálogo de Productos</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-areas:
+          "header header header header"
+          "nav nav nav nav"
+          "aside main main main"
+          "footer footer footer footer";
+        grid-template-columns: 1fr 3fr 3fr 3fr;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      header {
+        grid-area: header;
+        background: #cce5ff;
+        padding: 15px;
+        text-align: center;
+        font-size: 1.5em;
+      }
+      nav {
+        grid-area: nav;
+        background: #e2e3e5;
+        padding: 10px;
+        text-align: center;
+      }
+      aside {
+        grid-area: aside;
+        background: #f8d7da;
+        padding: 10px;
+      }
+      main {
+        grid-area: main;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        text-align: center;
+      }
+      main div {
+        border: 1px solid #000;
+        border-radius: 8px;
+        padding: 10px;
+        background: #fff;
+      }
+      main div img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      footer {
+        grid-area: footer;
+        background: #d4edda;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="grid-container">
+    <header>Catálogo de Productos</header>
+    <nav>Futuros botones de navegación</nav>
+    <aside>
+      <form>
+        <fieldset>
+          <legend>BÚSQUEDA</legend>
+          <label for="search">Buscar:</label>
+          <input type="text" id="search" placeholder="Palabra..." />
+        </fieldset>
+        <fieldset>
+          <legend>PRECIOS</legend>
+          <p>
+            <label for="precio-min">Mínimo:</label>
+            <input type="number" id="precio-min" value="0" min="0" />
+          </p>
+          <p>
+            <label for="precio-max">Máximo:</label>
+            <input type="number" id="precio-max" value="100" max="100" />
+          </p>
+        </fieldset>
+      </form>
+    </aside>
+    <main>
+      <div>
+        <img
+          src="../Ejercicios-JavaScript/images/cabezal-cerrado.webp"
+          alt="Cabezal Cerrado"
+        />
+        <h3>Cabezal Cerrado</h3>
+      </div>
+      <div>
+        <img
+          src="../Ejercicios-JavaScript/images/foco-con-dedos.webp"
+          alt="Foco con dedos"
+        />
+        <h3>Foco Con Dedos</h3>
+      </div>
+      <div>
+        <img
+          src="../Ejercicios-JavaScript/images/protectores-manos.webp"
+          alt="Protectores de manos"
+        />
+        <h3>Protectores de Manos</h3>
+      </div>
+      <div>
+        <img
+          src="../Ejercicios-JavaScript/images/escudo-potencia.webp"
+          alt="Escudo potencia"
+        />
+        <h3>Escudo Potencia</h3>
+      </div>
+      <div>
+        <img
+          src="../Ejercicios-JavaScript/images/protectores-pie.webp"
+          alt="Protectores de pie"
+        />
+        <h3>Protectores de Pie</h3>
+      </div>
+      <div>
+        <img src="../Ejercicios-JavaScript/images/dobok.webp" alt="Dobok" />
+        <h3>Dobok</h3>
+      </div>
+    </main>
+    <footer>Pie de página</footer>
+  </body>
+</html>
