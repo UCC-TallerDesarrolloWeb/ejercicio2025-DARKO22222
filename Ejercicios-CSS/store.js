@@ -62,60 +62,7 @@ const productos = [
   },
 ];
 
-let cargarProductos = () => {
-  let contenido = "";
-
-  productos.forEach((elemento, id) => {
-    contenido += `
-    <div>
-      <img src="images/${elemento.imagen}" alt="${elemento.nombre}" />
-      <h3>${elemento.nombre}</h3>
-      <p>$${elemento.precio}</p>
-      <button type="button" onclick="mostrarDetalle(${id})">
-        Ver Detalle del Producto
-      </button>
-      <button type="button" onclick="agregarAlcarrito(${id})">
-      Agregar al Carrito
-      </button>
-    </div>
-  `;
-  });
-  document.getElementById("mostrar-catalogo").innerHTML = contenido;
-};
-
-let agregarAlcarrito = (id) => {
-  let carritoList = localStorage.getItem("carrito");
-  if (carritoList == null) {
-    carritoList = [];
-  } else {
-    carritoList = JSON.parse(carritoList);
-  }
-  carritoList.push(id);
-  console.log(carritoList);
-  localStorage.setItem("carrito", JSON.stringify(carritoList));
-};
-
-let cargarCarrito = () => {
-  let carritoList = localStorage.getItem("carrito");
-  let contenido = "";
-  if (carritoList == null) {
-    contenido = "<div>su carrito está vacío.</div>";
-  } else {
-    carritoList = JSON.parse(carritoList);
-    carritoList.forEach((num) => {
-      contenido += `<div>
-    <h3>${productos[num].nombre}</h3>
-    <p>${productos[num].precio}</p><div>
-    `;
-    });
-  }
-  document.getElementById("mostrar-carrito").innerHTML = contenido;
-};
-
-let mostrarDetalle = (id) => {
-  document.getElementById("titulo-producto").innerText = productos[id].nombre;
-  document.getElementById("descr-producto").innerText =
-    productos[id].description;
+let mostrarDetalle = () => {
   document.getElementById("detalle").style.display = "block";
 };
 
