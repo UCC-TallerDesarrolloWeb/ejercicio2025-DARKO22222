@@ -59,3 +59,11 @@ header {
   background-color: var(--color-primario);
   color: var(--color-letra);
 }
+/* 
+#can-prod {
+  background-color: var(--color-primario);
+  color: var(--color-letra);
+  display: inline;
+  border-radius: 50%;
+  padding: 7px;
+} */

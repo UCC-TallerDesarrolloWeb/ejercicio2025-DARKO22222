@@ -62,10 +62,10 @@ const productos = [
   },
 ];
 
-let cargarProductos = () => {
+let cargarProductos = (prod = productos) => {
   let contenido = "";
 
-  productos.forEach((elemento, id) => {
+  prod.forEach((elemento, id) => {
     contenido += `
     <div>
       <img src="images/${elemento.imagen}" alt="${elemento.nombre}" />
@@ -93,6 +93,7 @@ let agregarAlcarrito = (id) => {
   carritoList.push(id);
   console.log(carritoList);
   localStorage.setItem("carrito", JSON.stringify(carritoList));
+  contarProductosCarrito();
 };
 
 let cargarCarrito = () => {
@@ -105,11 +106,33 @@ let cargarCarrito = () => {
     carritoList.forEach((num) => {
       contenido += `<div>
     <h3>${productos[num].nombre}</h3>
-    <p>${productos[num].precio}</p><div>
+    <p>${productos[num].precio}</p>
+    <button type="button" onclick="eliminarProducto(${id})">Eliminar del Carrito</button>
+    <div>
     `;
     });
+    contenido += `<button type="button" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
   }
   document.getElementById("mostrar-carrito").innerHTML = contenido;
+};
+
+let vaciarCarrito = () => {
+  localStorage.removeItem("carrito");
+  contarProductosCarrito();
+  window.location.reload();
+};
+
+let elimiminarProducto = (id) => {
+  let carritoList = localStorage.getItem("carrito");
+  carritoList = JSON.parse(carritoList);
+  carritoList.splice(id, 1);
+  if (carritoList.length > 0) {
+    localStorage.setItem("carrito", JSON.stringify(carritoList));
+  } else {
+    localStorage.removeItem("carrito");
+  }
+  contarProductosCarrito();
+  window.location.reload();
 };
 
 let mostrarDetalle = (id) => {
@@ -121,4 +144,55 @@ let mostrarDetalle = (id) => {
 
 let cerrarDetalle = () => {
   document.getElementById("detalle").style.display = "none";
+};
+
+let filtrarProductos = () => {
+  let searchWord = document.getElementById("search").value;
+  let min = document.getElementById("price-min").value;
+  let max = document.getElementById("price-max").value;
+  let marca = document.getElementById("marca").value;
+  let prot = document.getElementById("protectores").checked;
+  let entr = document.getElementById("entrenamiento").checked;
+  let dob = document.getElementById("dobok").checked;
+
+  let newList = productos;
+  if (searchWord) {
+    newList = newList.filter(
+      (prod) =>
+        prod.nombre.toLowerCase().includes(searchWord.toLowerCase()) ||
+        prod.description.toLowerCase().includes(searchWord.toLowerCase())
+    );
+  }
+  if (min) {
+    newList = newList.filter((prod) => prod.precio >= prod.precio >= min);
+  }
+  if (max) {
+    newList = newList.filter((prod) => prod.precio <= prod.precio <= max);
+  }
+  if (marca !== "Todas") {
+    newList = newList.filter((prod) => prod.marca === marca);
+  }
+  let categorias = [];
+  if (prot) categorias.push("Protectores");
+  if (entr) categorias.push("Entrenamiento");
+  if (dob) categorias.push("Dobok");
+  if (categorias.length > 0) {
+    newList = newList.filter((prod) => categorias.includes(prod.categoria));
+  }
+
+  mostrarDetalle(newList);
+};
+
+let formatPrecio = (precio) => {
+  return new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  }).format(precio);
+};
+
+let contarProductosCarrito = () => {
+  const getCarrito = JSON.parse(localStorage.getItem("carrito"));
+  if (getCarrito != null) {
+    document.getElementById("cant-prod").innerText = getCarrito.length;
+  }
 };
