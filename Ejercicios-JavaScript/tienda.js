@@ -97,30 +97,46 @@ let agregarAlcarrito = (id) => {
 };
 
 let cargarCarrito = () => {
-  let carritoList = localStorage.getItem("carrito");
   let contenido = "";
+  let carritoList = JSON.parse(localStorage.getItem("carrito"));
+  let total = 0;
   if (carritoList == null) {
-    contenido = "<div>su carrito está vacío.</div>";
-  } else {
-    carritoList = JSON.parse(carritoList);
-    carritoList.forEach((num) => {
-      contenido += `<div>
-    <h3>${productos[num].nombre}</h3>
-    <p>${productos[num].precio}</p>
-    <button type="button" onclick="eliminarProducto(${id})">Eliminar del Carrito</button>
-    <div>
-    `;
+    const listprod = [];
+    const listcant = [];
+    carrito.forEach((num) => {
+      if (!listprod.includes(num)) {
+        listprod.push(num);
+        listcant.push(1);
+      } else {
+        const inx = listprod.indexOf(num);
+        listcant[inx] += 1;
+      }
     });
-    contenido += `<button type="button" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
+    listprod.forEach((num, id) => {
+      const elemento = productos[num];
+      contenido += carritoList = JSON.parse(carritoList);
+      carritoList.forEach((num) => {
+        const elemento = productos[num];
+        contenido += `<div>
+    <h3>${elemento.nombre}</h3>
+    <p>${elemento.precio}</p>
+    <p>Cantidad: ${listcant[id]}</p>
+        <button type="button" onclick="eliminarProducto(${id})">Eliminar del Carrito</button>
+    <div> `;
+        total += elemento.precio * listcant[id];
+      });
+      contenido += `Total:  ${formatPrecio(total)}`;
+      contenido += `<button type="button" onclick="vaciarCarrito()">Vaciar Carrito</button>`;
+      document.getElementById("mostrar-carrito").innerHTML = contenido;
+    });
   }
-  document.getElementById("mostrar-carrito").innerHTML = contenido;
 };
 
-let vaciarCarrito = () => {
+function vaciarCarrito() {
   localStorage.removeItem("carrito");
   contarProductosCarrito();
   window.location.reload();
-};
+}
 
 let elimiminarProducto = (id) => {
   let carritoList = localStorage.getItem("carrito");
@@ -194,5 +210,35 @@ let contarProductosCarrito = () => {
   const getCarrito = JSON.parse(localStorage.getItem("carrito"));
   if (getCarrito != null) {
     document.getElementById("cant-prod").innerText = getCarrito.length;
+  }
+};
+
+let ordenarCatalogo = () => {
+  const opt = document.getElementById("ordenar").value;
+  let newProductos;
+  switch (opt) {
+    case "menor":
+      newProductos = productos.sort((a, b) => a.precio - b.precio);
+      break;
+    case "mayor":
+      newProductos = productos.sort((a, b) => b.precio - a.precio);
+      break;
+    case "az":
+      newProductos = productos.sort((a, b) => {
+        if (a.nombre.toUpperCase() < b.nombre.toUpperCase()) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+    case "za":
+      newProductos = productos.sort((a, b) => {
+        if (a.nombre.toUpperCase() > b.nombre.toUpperCase()) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      mostrarDetalle(newProductos);
   }
 };

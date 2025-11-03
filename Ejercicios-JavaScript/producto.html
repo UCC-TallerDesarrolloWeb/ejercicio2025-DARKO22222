@@ -4,6 +4,7 @@
     <title>Catalogo de Productos</title>
     <link rel="stylesheet" href="store.css" type="text/css" />
     <script type="text/javascript" src="tienda.js"></script>
+    <meta charset="UTF-8" />
   </head>
   <body class="grid-container" onload="cargarProductos();contarProductosCarrito()">
     <header class="item1">Catalogo de Productos</header>
@@ -67,6 +68,12 @@
             <label for="dobok">Dobok</label>
           </p>
         </fieldset>
+        <select id="order" onchange="orderCatalogo()">
+          <option value="menor">precio:Menor a Mayor</option>
+          <option value="mayor">precio:Mayor a Menor</option>
+          <option value="a-z">Nombre:A-Z</option>
+          <option value="z-a">Nombre:Z-A</option>
+        </select>
       </form>
     </aside>
     <dialog id="detalle">
