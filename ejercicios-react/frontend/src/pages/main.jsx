@@ -6,6 +6,7 @@ import Login from "./Login.jsx";
 import Layout from "@components/Layout.jsx";
 import Home from "./Home.jsx";
 import Activities from "./Activities.jsx";
+import Poke from "./Poke.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/actividades" element={<Activities />} />
+          <Route path="/poke" element={<Poke />} />
         </Route>
       </Routes>
     </BrowserRouter>
