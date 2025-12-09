@@ -1,4 +1,4 @@
-import Poke from "./pages/Poke.jsx";
+import Poke from "./Poke.jsx";
 
 function App() {
   return (
